@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -16,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -25,16 +26,13 @@ jobs:
 
       - name: Run tests
         run: |
-          echo "✅ Tests passed (placeholder)"  
+          echo "No tests yet, placeholder step"
 
-      # Build Docker image
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mlops_app:latest .
 
-      # Log in to DockerHub
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      # Push image to DockerHub
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/mlops_app:latest
