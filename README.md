@@ -49,3 +49,4 @@ This repository is the starter package for the **End-to-End MLOps Assignment**.
 - Monitoring script demo.
 
 Happy coding 🚀
+"# update to trigger CI" 
